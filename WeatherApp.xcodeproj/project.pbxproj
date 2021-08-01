@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B06B5FB726B68561008D8C61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B06B5FB626B68561008D8C61 /* Main.storyboard */; };
 		F50B8C1F24335FB000C512DB /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50B8C1E24335FB000C512DB /* IntExtension.swift */; };
 		F51B40842430ADB5002EDBD7 /* HourlyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51B40832430ADB5002EDBD7 /* HourlyCell.swift */; };
 		F57F8E45242F4788008E27E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F8E44242F4788008E27E8 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B06B5FB626B68561008D8C61 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F50B8C1E24335FB000C512DB /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		F51B40832430ADB5002EDBD7 /* HourlyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCell.swift; sourceTree = "<group>"; };
 		F57F8E41242F4788008E27E8 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,7 @@
 				F57F8E4D242F4789008E27E8 /* Assets.xcassets */,
 				F57F8E4F242F4789008E27E8 /* LaunchScreen.storyboard */,
 				F57F8E52242F4789008E27E8 /* Info.plist */,
+				B06B5FB626B68561008D8C61 /* Main.storyboard */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B06B5FB726B68561008D8C61 /* Main.storyboard in Resources */,
 				F57F8E51242F4789008E27E8 /* LaunchScreen.storyboard in Resources */,
 				F57F8E4E242F4789008E27E8 /* Assets.xcassets in Resources */,
 			);

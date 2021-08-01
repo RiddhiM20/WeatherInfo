@@ -8,7 +8,8 @@ class ForecastCell: UICollectionViewCell, SelfConfiguringCell, UICollectionViewD
     let weekdaylabel: UILabel = {
        let label = UILabel()
         label.text = "Monday"
-        label.textColor = .label
+        label.textColor = .white
+        label.backgroundColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -26,14 +27,14 @@ class ForecastCell: UICollectionViewCell, SelfConfiguringCell, UICollectionViewD
 
     override init(frame: CGRect) {
          super.init(frame: frame)
-        contentView.backgroundColor = .systemBackground
+        contentView.backgroundColor = .clear
          contentView.layer.cornerRadius = 10
          contentView.layer.masksToBounds = true
         
         collectionView = UICollectionView(frame: CGRect(x: 100, y: 0, width: (frame.width - 112), height: frame.height), collectionViewLayout: createCompositionalLayout())
         collectionView.register(HourlyCell.self, forCellWithReuseIdentifier: HourlyCell.reuseIdentifier)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
         addSubview(collectionView)

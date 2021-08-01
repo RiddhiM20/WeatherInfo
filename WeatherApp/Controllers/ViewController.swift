@@ -5,76 +5,72 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     let networkManager = WeatherNetworkManager()
+    @IBOutlet private var currentLocation: UILabel! {
+        didSet{
+            currentLocation.translatesAutoresizingMaskIntoConstraints = false
+            currentLocation.text = "...Location"
+            currentLocation.textAlignment = .left
+            currentLocation.numberOfLines = 0
+            currentLocation.font = UIFont.systemFont(ofSize: 38, weight: .heavy)
+        }
+    }
+        
+        
+    @IBOutlet private var currentTime: UILabel! {
+        didSet{
+            currentTime.translatesAutoresizingMaskIntoConstraints = false
+            currentTime.text = "31 July 2021"
+            currentTime.textAlignment = .left
+            currentTime.font = UIFont.systemFont(ofSize: 10, weight: .heavy)
+        }
+    }
+    @IBOutlet private var currentTemperatureLabel: UILabel! {
+        didSet{
+            currentTemperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+            currentTemperatureLabel.text = "°C"
+            currentTemperatureLabel.textAlignment = .left
+            currentTemperatureLabel.font = UIFont.systemFont(ofSize: 60, weight: .heavy)
+        }
+    }
     
-    let currentLocation: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "...Location"
-        label.textAlignment = .left
-        label.textColor = .label
-        label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 38, weight: .heavy)
-        return label
-    }()
+    @IBOutlet private var tempDescription: UILabel! {
+        didSet{
+            tempDescription.translatesAutoresizingMaskIntoConstraints = false
+            tempDescription.text = "..."
+            tempDescription.translatesAutoresizingMaskIntoConstraints = false
+            tempDescription.textAlignment = .left
+            tempDescription.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        }
+    }
     
-    let currentTime: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "31 July 2021"
-        label.textAlignment = .left
-        label.textColor = .label
-        label.font = UIFont.systemFont(ofSize: 10, weight: .heavy)
-        return label
-    }()
+    @IBOutlet private var tempSymbol: UIImageView! {
+        didSet{
+            tempSymbol.image = UIImage(systemName: "cloud.fill")
+            tempSymbol.contentMode = .scaleAspectFit
+            tempSymbol.translatesAutoresizingMaskIntoConstraints = false
+            tempSymbol.tintColor = .gray
+        }
+    }
     
-    let currentTemperatureLabel: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "°C"
-        label.textColor = .label
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 60, weight: .heavy)
-        return label
-    }()
     
-    let tempDescription: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "..."
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.textColor = .label
-        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        return label
-    }()
-    let tempSymbol: UIImageView = {
-       let img = UIImageView()
-        img.image = UIImage(systemName: "cloud.fill")
-        img.contentMode = .scaleAspectFit
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.tintColor = .gray
-        return img
-    }()
+    @IBOutlet private var maxTemp: UILabel! {
+        didSet{
+            maxTemp.translatesAutoresizingMaskIntoConstraints = false
+            maxTemp.text = "  °C"
+            maxTemp.textAlignment = .left
+            maxTemp.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        }
+    }
     
-
-    let maxTemp: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "  °C"
-        label.textAlignment = .left
-        label.textColor = .label
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        return label
-    }()
-    let minTemp: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "  °C"
-        label.textAlignment = .left
-        label.textColor = .label
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        return label
-    }()
+    @IBOutlet private var minTemp: UILabel! {
+        didSet{
+            minTemp.translatesAutoresizingMaskIntoConstraints = false
+            minTemp.text = "  °C"
+            minTemp.textAlignment = .left
+            minTemp.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        }
+    }
+   
     
     var locationManager = CLLocationManager()
     var currentLoc: CLLocation?
@@ -87,7 +83,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
          // Do any additional setup after loading the view.
          view.backgroundColor = .systemBackground
         
-         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus.circle"), style: .done, target: self, action: #selector(handleAddPlaceButton)), UIBarButtonItem(image: UIImage(systemName: "thermometer"), style: .done, target: self, action: #selector(handleShowForecast)),UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .done, target: self, action: #selector(handleRefresh))]
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus.circle")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), style: .done, target: self, action: #selector(handleAddPlaceButton)), UIBarButtonItem(image: UIImage(systemName: "thermometer")?.withRenderingMode(.alwaysOriginal).withTintColor(.white), style: .done, target: self, action: #selector(handleShowForecast))]
          
           locationManager.delegate = self
           locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -96,8 +92,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         transparentNavigationBar()
           
-        setupViews()
-        layoutViews()
+        //setupViews()
+        //layoutViews()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -225,7 +221,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     @objc func handleShowForecast() {
-        self.navigationController?.pushViewController(ForecastViewController(), animated: true)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ForecastViewController") as! ForecastViewController
+
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func handleRefresh() {

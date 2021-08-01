@@ -10,7 +10,8 @@ class HourlyCell: UICollectionViewCell {
         label.text = "05:00"
         label.font = UIFont.systemFont(ofSize: 8)
         label.textAlignment = .center
-        label.textColor = .label
+        label.textColor = .white
+        label.backgroundColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -27,7 +28,8 @@ class HourlyCell: UICollectionViewCell {
         label.text = "05:00"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textAlignment = .center
-        label.textColor = .label
+        label.textColor = .white
+        label.backgroundColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -35,7 +37,7 @@ class HourlyCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
          super.init(frame: frame)
-        contentView.backgroundColor = UIColor.systemBackground
+        contentView.backgroundColor = UIColor.clear
          contentView.layer.cornerRadius = 10
          contentView.layer.masksToBounds = true
     
